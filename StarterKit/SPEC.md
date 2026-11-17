@@ -1,4 +1,4 @@
-# Subnet Fishing · First playable specification
+# Subnet Sashimi · First playable specification
 
 ## The pitch
 
@@ -49,7 +49,7 @@ As a learner, I want to apply the host-range rule to visible subnet information 
 - **AC1:** A fresh session begins with a short briefing before the first challenge.
 - **AC2:** Tier one selects a prefix from `/8` through `/15`, generates a valid address in its subnet, hides exactly one octet, and accepts any address valid for the displayed subnet.
 - **AC3:** Tier two selects a prefix from `/16` through `/24`, generates a valid address in its subnet, hides all four octets, and accepts any address valid for the displayed subnet.
-- **AC4:** Each challenge shows the subnet and prefix. Correct feedback explains why the answer is in the subnet and excludes its network and broadcast addresses.
+- **AC4:** Each challenge shows the subnet and prefix. A correct submission opens a large sashimi celebration overlay with an explanation and a Continue action. The challenge underneath becomes inactive; further fishing, editing, and submission are blocked until the player continues.
 - **AC5:** Any wrong, well-formed address triggers the release animation and identifies whether it is outside the subnet or is the network/broadcast address. Progress remains unchanged and unlimited retry is available.
 - **AC6:** After the first wrong submission, a **Show Answer** button becomes available. Selecting it displays a valid address and explanation, and records assistance. Showing the answer does not complete the tier; the player must submit a valid address to advance.
 - **AC7:** Empty or malformed input gives actionable guidance and does not count as an attempt or change progress.
@@ -103,7 +103,7 @@ Check expected results independently of the implementation. Add generated bounda
 
 - **Aesthetic:** Minimalist and cute, with a calm, uncluttered lake scene, friendly fish, and simple expressive animation. Keep the subnet and address values easy to read.
 - **Visual metaphor:** A calm lake where fish carry IPv4 octet values; the fishing line makes selecting a value feel like fishing.
-- **Memorable moment:** A correct address becomes sashimi; a wrong submission releases all caught fish with a specific explanation.
+- **Memorable moment:** On success, the caught fish visibly transform into sashimi in a large celebration overlay. On a wrong submission, all caught fish splash back into the lake with a specific explanation.
 - **Always visible:** Subnet and prefix, address slots, caught octets in order, Submit, and progress through both tiers.
 - **Feedback voice:** Patient and specific; describe the submitted address and rule before offering a next step.
 - **Layout:** Challenge first, fishing area and address assembly next, Submit and hints within reach, explanation beside or below. Do not hide technical values behind hover-only interactions.

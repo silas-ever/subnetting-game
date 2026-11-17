@@ -1,4 +1,4 @@
-# Subnet Fishing · Implementation plan
+# Subnet Sashimi · Implementation plan
 
 ## Build target
 
@@ -125,7 +125,7 @@ Count each well-formed submitted address once as an attempt while the challenge 
 
 ## Interaction and visual direction
 
-Use a minimalist, cute visual style: a calm uncluttered lake, friendly fish, simple expressive animation, and a small color palette. Keep subnet and address values high-contrast and easy to read. The fishing line follows the pointer; touching a fish hooks it, and returning to the top reels it in. Provide equivalent keyboard controls and do not make precision motion necessary. Correct submissions get a short sashimi animation; incorrect submissions release all caught fish. Under reduced motion, replace movement with immediate state changes and retain the same textual feedback.
+Use a minimalist, cute visual style: a calm uncluttered lake, friendly fish, simple expressive animation, and a small color palette. Keep subnet and address values high-contrast and easy to read. The fishing line follows the pointer; touching a fish hooks it, and returning to the top reels it in. Provide equivalent keyboard controls and do not make precision motion necessary. Correct submissions open a large sashimi celebration overlay and make the challenge inert until Continue. Incorrect submissions release all caught fish. Under reduced motion, replace movement with immediate state changes and retain the same textual feedback.
 
 Always show the subnet/prefix, blank address slots, caught octets in order, Submit, hint/help controls, and tier progress. Use semantic buttons, labels, a live region for result feedback, and deliberate focus movement after state changes.
 

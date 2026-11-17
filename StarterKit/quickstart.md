@@ -1,4 +1,4 @@
-# Quickstart · Subnet Fishing
+# Quickstart · Subnet Sashimi
 
 This guide describes the planned end-to-end validation flow. Run commands become actionable after implementation creates the referenced files.
 

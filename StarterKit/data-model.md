@@ -1,4 +1,4 @@
-# Data model · Subnet Fishing
+# Data model · Subnet Sashimi
 
 ## Session
 

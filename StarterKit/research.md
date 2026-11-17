@@ -1,4 +1,4 @@
-# Research notes · Subnet Fishing
+# Research notes · Subnet Sashimi
 
 ## Decision: generate within the stated IPv4 prefix range
 

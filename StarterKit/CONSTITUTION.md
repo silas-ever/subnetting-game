@@ -1,4 +1,4 @@
-# Subnet Fishing · Project constitution
+# Subnet Sashimi · Project constitution
 
 **Purpose:** help people learning the basics of IPv4 subnetting practice finding valid host addresses through an interactive fishing game.
 
