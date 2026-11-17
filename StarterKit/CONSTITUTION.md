@@ -7,7 +7,7 @@
 
 # [GAME NAME] · Project constitution
 
-**Purpose:** help [TARGET LEARNER] practice [ONE NETWORKING SKILL] through [CORE PLAYER ACTION].
+**Purpose:** help people learning the basics of networking practice subnetting through an interactive fishing game.
 
 **First release:** one core mechanic, three short levels, a browser, and a 60-minute workshop build. Change this budget only by updating the agreed scope.
 

@@ -11,14 +11,14 @@
 
 **[ONE SENTENCE: PLAYER + ACTION + SKILL + VISIBLE CONSEQUENCE].**
 
-The player is [ROLE] in [SETTING]. Each round shows [TECHNICAL EVIDENCE] and asks the player to [DECISION]. A correct decision [VISIBLE RESULT]; an incorrect decision [VISIBLE RESULT AND EXPLANATION]. The session ends when [CONCRETE COMPLETION CONDITION].
+The player is fisherman near a lake. Each round shows a subnet range on top, placeholder values for an IP address (four placeholders, one for each octet in an IPv4 address). There are several fish swimming by labeled with numbers, and the game asks the player to select the fish corresponding to the octet of an IP address in the subnet range. A correct decision shows an animation of the fish being cut into sashimi; an incorrect decision shows an animation of releasing all of the fish back into the lake. The session ends when an IP address in the subnet range is successfully constructed using the fish.
 
 ## Who this is for
 
-- **Learner:** [AUDIENCE AND EXPERIENCE].
-- **Assumed knowledge:** [WHAT THEY ALREADY KNOW; WRITE “NONE” IF APPROPRIATE].
+- **Learner:** Anyone interested in networking.
+- **Assumed knowledge:** Basic subnetting - how to calculate IP addresses in range of a given subnet.
 - **What the briefing teaches:** [TERMS AND METHOD NEEDED BEFORE THE FIRST DECISION].
-- **Why interaction helps:** [A SPECIFIC MISCONCEPTION THIS GAME MAKES VISIBLE].
+- **Why interaction helps:** Interaction with this game allows the player to understand that there is usually more than one right answer.
 - **Session target:** 5–10 minutes for a first playthrough, with unlimited thinking time.
 
 ## Learning outcomes and evidence
