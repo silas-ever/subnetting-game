@@ -23,10 +23,13 @@ Open `http://127.0.0.1:8000/`. Use the server rather than `file://` so native mo
 2. Confirm tier one displays a `/8`–`/15` subnet and one missing octet.
 3. Fish for an octet, submit a valid host address, and confirm the explanation advances to tier two.
 4. Submit a network, broadcast, or outside-subnet address in tier two; confirm the fish release and specific feedback, with progress unchanged.
-5. Confirm **Show Answer** is available after the first wrong submission. Select it; verify a valid address and explanation appear, assistance is recorded, and progress does not advance.
-6. Submit any valid host address; confirm the success explanation and session summary.
-7. Restart and cancel once to confirm progress is preserved; restart again and confirm a fresh session.
-8. Repeat the core actions with keyboard controls and reduced motion enabled.
+5. Confirm **Show Answer** is available after the first wrong submission. Select it; verify a valid address and explanation appear, assistance is recorded, submissions are locked, and Continue advances to the next round.
+6. Submit any valid host address; confirm the success overlay blocks the challenge until Continue.
+7. Continue into round three; verify the full-address challenge uses a prefix from `/8` through `/30`. Repeat for additional rounds.
+8. Verify the score rises by 10 on a correct answer and is unchanged by a wrong answer or Show Answer.
+9. Verify Show Answer displays the valid example plus the inclusive acceptable host range.
+10. Restart and cancel once to confirm progress is preserved; restart again and confirm a fresh session.
+11. Repeat the core actions with keyboard controls and reduced motion enabled.
 
 ## Automated checks
 
@@ -38,3 +41,4 @@ After implementation, open `http://127.0.0.1:8000/tests/` and verify the runner 
 - `192.168.1.42` is accepted in `192.168.1.0/24`.
 - `192.168.1.0` and `192.168.1.255` are rejected in that `/24` as network and directed broadcast addresses.
 - `192.168.2.42` is rejected in that `/24` as outside the subnet.
+- A `/30` challenge offers a valid host address between its network and broadcast addresses.

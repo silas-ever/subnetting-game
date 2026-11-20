@@ -2,7 +2,7 @@
 
 ## Decision: generate within the stated IPv4 prefix range
 
-Generate prefixes `/8`–`/15` for tier one and `/16`–`/24` for tier two. Generate an aligned network address, derive its broadcast address, and select an example host strictly between those endpoints. Reject any generated challenge that fails these invariants.
+Generate prefixes `/8`–`/15` for round one, `/16`–`/24` for round two, and `/8`–`/30` from round three onward. Generate an aligned network address, derive its broadcast address, and select an example host strictly between those endpoints. Reject any generated challenge that fails these invariants.
 
 **Rationale:** The spec requires random challenge variety while keeping grading rule-based and reproducible. Generating a valid example before hiding it guarantees the challenge starts from sound content; the evaluator still accepts any valid host.
 
@@ -29,4 +29,4 @@ Use semantic HTML, CSS, and native JavaScript modules, served statically. Use DO
 - [RFC 1812 §4.2.3.1](https://www.rfc-editor.org/rfc/rfc1812.html#section-4.2.3.1): source for the IPv4 network-prefix-directed broadcast convention.
 - [RFC 3021 §2.1](https://www.rfc-editor.org/rfc/rfc3021.html#section-2.1): documents `/31` point-to-point behavior; `/31` and `/32` are excluded from this game's supported range.
 
-The game uses the educational host-range model specified in the constitution: exclude the network address and directed broadcast address from assignable hosts for prefixes `/8`–`/24`.
+The game uses the educational host-range model specified in the constitution: exclude the network address and directed broadcast address from assignable hosts for prefixes `/8`–`/30`; `/31` and `/32` are excluded.

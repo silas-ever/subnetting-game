@@ -15,12 +15,13 @@ Open <http://127.0.0.1:8000/>. On Windows, use `py` instead of `python3`.
 ## How to play
 
 1. Read the short host-range briefing.
-2. In tier one, complete one missing octet for a `/8`–`/15` subnet.
-3. In tier two, build a full address for a `/16`–`/24` subnet.
+2. In round one, complete one missing octet for a `/8`–`/15` subnet.
+3. In round two, build a full address for a `/16`–`/24` subnet. Later rounds use full addresses with random `/8`–`/30` prefixes and continue indefinitely.
 4. Move from the top of the lake toward a fish, then return to the top to reel it in. Keyboard users can focus and select fish.
-5. Submit when the address is ready. Incorrect submissions release the caught fish and explain the issue. After the first wrong submission, **Show Answer** reveals a valid example and records assistance; it does not advance the tier.
+5. Submit when the address is ready. Incorrect submissions release the caught fish and explain the issue. After the first wrong submission, **Show Answer** reveals a valid example and locks that question. Review it, then choose Continue to advance. Correct answers also show a celebration overlay before Continue.
+6. Earn 10 points for each correct answer. Wrong answers do not reduce the score.
 
-The game accepts any IPv4 host address inside the displayed subnet except the network and directed broadcast addresses. `/31` and `/32` are outside the supported range. Challenges and fish values are generated locally; the game needs no account, network service, or API key.
+The game accepts any IPv4 host address inside the displayed subnet except the network and directed broadcast addresses. Show Answer displays one valid address and the inclusive acceptable host range. Prefixes `/31` and `/32` are outside the supported range. Challenges and fish values are generated locally; the game needs no account, network service, or API key.
 
 ## Project documents
 

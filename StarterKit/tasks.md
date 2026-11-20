@@ -12,7 +12,7 @@
 - [x] T005 Implement tier progression, attempts, hints, Show Answer assistance, restart, and completion state in `engine/state.js`.
 - [x] T006 Implement challenge rendering, address slots, summary, and accessible feedback in `ui/render.js`.
 - [x] T007 Implement pointer fishing, reeling, fish lifecycle, and keyboard-equivalent controls in `ui/fishing.js`.
-- [x] T008 Connect briefing, generated challenges, submit evaluation, wrong-answer retry, Show Answer, and session summary in `main.js`.
+- [x] T008 Connect briefing, generated challenges, submit evaluation, wrong-answer retry, Show Answer, and round-to-round continuation in `main.js`.
 
 ## Loop 3 · Polish and align with the spec
 
@@ -25,3 +25,5 @@
 
 - [x] T013 Use inline fish silhouettes, present the address slots in a woven fish basket, allow caught octets to be removed, and preserve other fish DOM nodes and swim positions when catching or spawning in `ui/render.js`, `main.js`, `engine/generate.js`, and `style.css`.
 - [x] T014 Rename the game to Subnet Sashimi and animate caught fish into sashimi on correct submissions and back into the lake on incorrect submissions in `index.html`, `ui/render.js`, `main.js`, `style.css`, `README.md`, and StarterKit docs.
+- [x] T015 Make rounds endless: preserve the single-octet `/8`–`/15` warm-up and `/16`–`/24` full-address second round, then generate full-address rounds with `/8`–`/30`; Show Answer locks the round until Continue in `engine/generate.js`, `engine/ipv4.js`, `engine/state.js`, `ui/render.js`, and `main.js`.
+- [x] T016 Show the inclusive valid-host range with the revealed example address, and award 10 points per correct answer with no wrong-answer penalty in `engine/state.js`, `ui/render.js`, and `StarterKit` docs.
