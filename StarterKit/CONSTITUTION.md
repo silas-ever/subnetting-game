@@ -1,37 +1,32 @@
-> **Editor note — personalize, then remove this note.**
-> This is the input to the **constitution** step. Replace the bracketed fields,
-> keep the principles you intend to enforce, and agree on any changes with your
-> group. Each principle includes evidence: your agent should know how to check it.
-> Read the lab guide before running commands. A completed example is available
-> in `WORKSHOP/LAB/Examples/PrefixQuest/` in the workshop repository.
+# Subnet Sashimi · Project constitution
 
-# [GAME NAME] · Project constitution
+**Purpose:** help people learning the basics of IPv4 subnetting practice finding valid host addresses through an interactive fishing game.
 
-**Purpose:** help [TARGET LEARNER] practice [ONE NETWORKING SKILL] through [CORE PLAYER ACTION].
-
-**First release:** one core mechanic, three short levels, a browser, and a 60-minute workshop build. Change this budget only by updating the agreed scope.
+**First release:** one fishing mechanic and an endless sequence of generated browser challenges. The first challenge is a single-octet warm-up; the second uses a full address with `/16`–`/24`; later full-address challenges randomly use `/8`–`/30`. The player can stop at any time. Change this scope only by updating the agreed specification.
 
 ## C1 · Technical truth is a release requirement
 
-The game must never reward a technically incorrect answer. Grading must be reproducible from a documented rule and the challenge inputs. Unsupported or ambiguous content is an authoring error: show an explanation that the challenge is unavailable and prevent grading it.
+The game must never reward a technically incorrect answer. Grading must be reproducible from the generated challenge inputs and documented rules. Unsupported or ambiguous content is an authoring or generation error: show that the challenge is unavailable and prevent grading it.
 
-Document the model being taught: [PROTOCOL/VENDOR CONTEXT, ASSUMPTIONS, AND IMPORTANT EXCLUSIONS]. Simplifications must appear in the briefing and README wherever they affect what the player can conclude. Fictional worlds and animations may illustrate a rule; they must not change it.
+Teach ordinary IPv4 subnet host ranges for prefixes `/8` through `/30`. The network address and directed broadcast address are not valid host addresses. `/31` point-to-point links and `/32` host routes are outside the first release. State this model in the briefing and README wherever it affects what the player can conclude. Fiction and animation may illustrate a rule; they must not change it.
 
-**Evidence:** hand-checked correct, incorrect, and boundary cases; a source link and section for each networking rule; review of all shipped briefings and explanations. Expected results are recorded independently of the implementation under test.
+Generate a subnet and a valid host address first, then construct the challenge around them. For a one-octet challenge, hide one octet of a valid address. For a full-address challenge, hide all four octets. Fish values may be random distractors, but the game must keep supplying fish that can complete a valid answer. Accept any address that satisfies the stated subnet rule, not only the address initially used to construct the challenge.
+
+**Evidence:** hand-check correct, incorrect, and boundary cases across the supported prefix range; cite a source and section for each networking rule; review generated challenges and explanations. Expected results are recorded independently of the implementation under test.
 
 ## C2 · Every round teaches through a decision
 
-The player's main action must exercise the target skill. Introduce a concept before testing it, and show the values needed to reason about the answer. A wrong answer explains the specific mistake and gives the player a useful next step. A correct answer explains why it works.
+The player's main action must exercise the target skill. Introduce the method before testing it and show the subnet and prefix needed to reason about the answer. A wrong answer explains why the submitted address is outside the valid host range and lets the player try again. A correct answer explains why it works.
 
-Use this learning sequence: [FOUNDATION] → [APPLICATION] → [TRANSFER OR EDGE CASE]. Hints reveal a method first, then a worked step. Worked solutions are available when a learner is stuck; viewing one is recorded as assistance, never as independent mastery.
+Use a sequential opening progression: round one uses `/8` through `/15` with one octet missing; round two uses `/16` through `/24` with the full address missing; round three onward uses the full address with a random prefix from `/8` through `/30`. A correct submission opens the sashimi overlay; Continue advances to the next round. After a wrong submission, Show Answer reveals a valid address and locks the challenge until Continue; this is recorded as assistance, not independent mastery. Hints reveal a method first, then a worked step.
 
 **Evidence:** a teammate can connect each player action to a learning outcome and describe what they learned from a deliberately wrong choice.
 
 ## C3 · Progress is honest and retry is safe
 
-A round completes only on a valid, correct submission. Incorrect answers keep the challenge available. Empty or malformed submissions give input guidance without counting as a wrong attempt. Repeated Submit actions cannot award progress twice.
+A challenge advances after a valid, correct submission followed by Continue, or after the player chooses Show Answer and then Continue. Assisted advances are recorded separately from correct submissions. Incorrect answers keep the challenge available. Empty or malformed submissions give input guidance without counting as a wrong attempt. Repeated Submit actions cannot award progress twice.
 
-No lives, countdown, or speed bonus in this first version. Hints and retries have no penalty. Show completed rounds, attempts, and assistance separately; completion is not proof of independent mastery. The specification must say exactly what advances a round, finishes a level, and resets a session.
+Award 10 points for each correct answer. Wrong answers and assistance do not change the score. No lives, countdown, or speed bonus in this first version. Hints and retries have no penalty. Show rounds advanced, attempts, assistance, and score separately; continued play is not proof of independent mastery. A correct answer locks the challenge until Continue. Show Answer also locks the challenge and records assistance; Continue advances without accepting another submission. The player may stop or restart at any point.
 
 **Evidence:** wrong-answer, repeated-submit, hint, completion, and reset checks match the specification.
 
@@ -45,19 +40,17 @@ Keep the challenge usable on a typical laptop and a narrow browser window. Dense
 
 ## C5 · The first version is deterministic and self-contained
 
-Ship authored content and deterministic domain logic. The game requires no account, backend, live device connection, model, or API key. AI may help write code and assets during development; its output receives the same review as any other contribution.
+The game requires no account, backend, live device connection, model, or API key. Challenge generation and grading run locally. Random selection may vary the prefix, subnet, and fish values, but the rules and expected answer set must be reproducible from the generated challenge data. AI may help write code and assets during development; its output receives the same review as any other contribution.
 
-Runtime AI tutoring, generated questions, and free-text AI grading are stretch work. Adding them requires an explicit change to the constitution, specification, and verification approach before implementation.
+Runtime AI tutoring, generated questions from an external service, and free-text AI grading are stretch work. Adding them requires an explicit change to the constitution, specification, and verification approach before implementation.
 
 **Evidence:** a clean browser session can play using only the project's static files; no external content service decides an answer.
 
 ## C6 · Content and logic can be reviewed separately
 
-Store level content, hints, sources, and difficulty in editable data. Keep domain rules separate from rendering and progress tracking. Validate data before presenting a challenge. Feedback must agree with the evaluator's reasoning; a hand-authored answer key cannot silently override the rule engine.
+Keep subnet generation, grading rules, level progression, and rendering separate. Validate generated challenges before presenting them. Feedback must agree with the evaluator's reasoning. Adding another supported prefix or fish distractor must not create a separate scoring path or screen implementation.
 
-Adding another challenge that uses the existing mechanic should require a data change and its checks, not a new scoring path or a new screen implementation.
-
-**Evidence:** inspect one level's data, trace one answer through the evaluator, and add a trial challenge without modifying the rule engine.
+**Evidence:** trace one generated answer through the evaluator and add a trial challenge without modifying the rule engine.
 
 ## C7 · Done is demonstrated
 
