@@ -37,6 +37,7 @@ h1 { margin: 0; color: var(--ink); font-size: clamp(1.65rem, 4vw, 2.25rem); line
 .topbar { display: flex; align-items: center; justify-content: space-between; margin: 0 2px 16px; }
 .wordmark { color: var(--teal-dark); text-decoration: none; font-weight: 800; }
 .progress { padding: 7px 12px; border-radius: 99px; background: #e1f2ed; color: var(--teal-dark); font-size: .85rem; font-weight: 800; }
+.score { padding: 7px 12px; border: 1px solid #e3c78f; border-radius: 99px; color: #75592c; background: #fff3cd; font-size: .85rem; font-weight: 800; font-variant-numeric: tabular-nums; }
 .game-card { overflow: hidden; padding: clamp(20px, 4vw, 38px); }
 .challenge-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .subnet-badge { display: grid; gap: 2px; min-width: max-content; padding: 10px 14px; border: 1px solid var(--line); border-radius: 14px; background: #f6fbf8; }
@@ -105,6 +106,10 @@ h1 { margin: 0; color: var(--ink); font-size: clamp(1.65rem, 4vw, 2.25rem); line
 .summary-stat { padding: 10px; border-radius: 12px; background: #f0f8f4; font-weight: 700; }
 .celebration-overlay { position: fixed; z-index: 50; inset: 0; display: grid; place-items: center; padding: 18px; background: #183e3bdd; backdrop-filter: blur(5px); animation: overlay-in .22s ease-out both; }
 .celebration { width: min(100%, 520px); padding: clamp(24px, 6vw, 42px); border: 2px solid #fff4d7; border-radius: 30px; background: #fffdf7; box-shadow: 0 25px 80px #102e2b66; text-align: center; }
+.answer-dialog { width: min(100%, 510px); padding: clamp(26px, 6vw, 44px); border: 2px solid #fff4d7; border-radius: 28px; background: #fffdf7; box-shadow: 0 25px 80px #102e2b66; text-align: center; animation: overlay-in .2s ease-out both; }
+.answer-dialog h2 { color: #234b46; font-size: clamp(1.5rem, 5vw, 2.2rem); }
+.answer-dialog > p:not(.eyebrow) { color: var(--muted); line-height: 1.55; }
+.revealed-address { margin: 20px 0; padding: 18px 12px; border: 2px solid #d5e8dd; border-radius: 16px; color: #1e635d !important; background: #edf8f2; font-size: clamp(1.55rem, 6vw, 2.4rem); font-weight: 800; font-variant-numeric: tabular-nums; }
 .celebration h2 { margin: 0; color: #234b46; font-size: clamp(1.8rem, 6vw, 2.6rem); }
 .celebration > p:not(.eyebrow) { color: var(--muted); line-height: 1.55; }
 .celebration-stage { position: relative; width: min(100%, 330px); height: 190px; margin: 14px auto; overflow: hidden; border-radius: 20px; background: radial-gradient(ellipse at 50% 100%, #d7eee7 0 30%, transparent 31%), #f2f8f2; }
@@ -130,6 +135,7 @@ h1 { margin: 0; color: var(--ink); font-size: clamp(1.65rem, 4vw, 2.25rem); line
   .app { width: min(100% - 18px, 900px); padding-top: 12px; }
   .game-card { padding: 16px 13px; border-radius: 20px; }
   .challenge-head { align-items: flex-start; }
+  .topbar { flex-wrap: wrap; gap: 8px; }
   .subnet-badge { padding: 8px 10px; }
   .instruction { font-size: .92rem; }
   .lake-wrap { height: 250px; }

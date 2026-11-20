@@ -14,7 +14,7 @@ let random = createRandom(session.seed ^ 0xa5a5a5a5);
 let hintVisible = false;
 
 function replenish() {
-  if (session.view === 'summary' || session.view === 'briefing' || fish.length >= 12) return;
+  if (session.view === 'briefing' || fish.length >= 12) return;
   const newFish = nextFish(session.challenge, random);
   fish = [...fish, newFish];
   appendFish(app, newFish, action);
@@ -32,11 +32,12 @@ function paint() {
   cleanupFishing();
   render(app, { ...session, hintVisible }, caught, fish, action, releasedFish);
   cleanupFishing = bindFishing(app.querySelector('.lake-wrap'), (id) => action('catch', id));
-  if (session.feedback?.status === 'correct') app.querySelector('.celebration-continue')?.focus();
+  if (session.feedback?.status === 'correct' || session.answerShown) app.querySelector('.celebration-continue')?.focus();
 }
 
 function action(name, payload) {
   let patchOnly = false;
+  if ((session.answerShown || session.feedback?.status === 'correct') && name !== 'next' && name !== 'restart') return;
   if (name === 'start') {
     session = { ...session, view: 'challenge' };
     startFishStream();
@@ -81,9 +82,10 @@ function action(name, payload) {
     hintVisible = false;
   } else if (name === 'next') {
     session = advanceAfterCorrect(session);
-    if (session.view !== 'summary') startFishStream();
+    startFishStream();
   } else if (name === 'show-answer') {
     session = showAnswer(session);
+    clearInterval(fishTimer);
   } else if (name === 'hint') {
     hintVisible = !hintVisible;
   } else if (name === 'restart') {

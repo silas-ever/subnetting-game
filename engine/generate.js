@@ -24,9 +24,9 @@ function choosePrivateNetwork(random, prefix) {
 }
 
 export function generateChallenge(tier, seed = Date.now()) {
-  if (tier !== 1 && tier !== 2) throw new RangeError('Tier must be 1 or 2.');
+  if (tier !== 1 && tier !== 2 && tier !== 3) throw new RangeError('Tier must be 1, 2, or 3.');
   const random = createRandom(seed);
-  const prefix = tier === 1 ? randomInt(random, 8, 15) : randomInt(random, 16, 24);
+  const prefix = tier === 1 ? randomInt(random, 8, 15) : tier === 2 ? randomInt(random, 16, 24) : randomInt(random, 8, 30);
   const networkNumber = choosePrivateNetwork(random, prefix);
   const bounds = subnetBounds(fromNumber(networkNumber), prefix);
   const exampleNumber = randomInt(random, bounds.network + 1, bounds.broadcast - 1);

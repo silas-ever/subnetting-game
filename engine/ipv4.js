@@ -32,7 +32,7 @@ export function subnetBounds(address, prefix) {
 export function isValidHost(address, challenge) {
   const octets = Array.isArray(address) ? address : parseIPv4(address);
   const value = toNumber(octets);
-  if (value === null || !challenge || !Number.isInteger(challenge.prefix) || challenge.prefix < 8 || challenge.prefix > 24) {
+  if (value === null || !challenge || !Number.isInteger(challenge.prefix) || challenge.prefix < 8 || challenge.prefix > 30) {
     return { status: 'invalid-input', reasonCode: 'malformed-address' };
   }
   const bounds = subnetBounds(challenge.network, challenge.prefix);
