@@ -1,104 +1,89 @@
 ---
-# ARCADE SUBMISSION — fill this file in, commit it to the ROOT of your game repository as ARCADE.md,
-# then send John your GitHub URL. Everything between the two --- lines is machine-read.
-#
-# INSTRUCTIONS FOR THE BUILD AGENT (the coding agent that built this game):
-#  1. You were there. Fill every field from your own session, your files and your tool list.
-#  2. Do NOT invent. If something was not recorded or you do not know it, write "unknown".
-#     A truthful "unknown" is better than a confident guess. Never estimate tokens or cost.
-#  3. Ask the human ONLY for the fields marked (HUMAN): name, location, links, consent, first-project.
-#  4. Keep strings on one line, quote any value containing a colon. Lists use [a, b, c] or "- item".
-#  5. Do not put secrets, API keys, tokens, private URLs or file paths from the human's machine here.
-#  6. Run the game once yourself and confirm the Runtime section is correct before you finish.
-#  7. Then fill in the three short prose sections below the frontmatter. Plain language, no hype.
 arcade_version: 1
 
 game:
-  title: ""                  # Display name, e.g. "Per-Hop Works"
-  slug: ""                   # lowercase-with-dashes, e.g. per-hop-works
-  tagline: ""                # One line, under 90 characters
-  summary: ""                # 2-3 sentences: what the player does and what they learn
-  topics: []                 # e.g. [DiffServ, QoS, RFC 4594]. 2-6 short tags
-  category: ""               # network-fundamentals | routing | switching | security | automation | observability | wireless | cloud | other
-  skill_level: ""            # beginner | intermediate | advanced   (the PLAYER's level)
-  play_minutes: 0            # rough time for one sitting
-  levels: 0                  # number of levels / scenarios / rounds
-  card_image: ""             # path in this repo to a 16:9 image, webp/png/jpg, under 1 MB. e.g. assets/images/title.webp
-  card_image_alt: ""         # one sentence describing the image for screen readers
-  repo: ""                   # https://github.com/<user>/<repo>
-  repo_path: ""              # only if the game lives in a sub-folder of the repo, else ""
-  license: ""                # SPDX id, e.g. Apache-2.0 or MIT
+  title: "Subnet Sashimi"
+  slug: "subnet-sashimi"
+  tagline: "An educational fishing game for practicing IPv4 subnetting."
+  summary: "Catch octets and build a valid host address for each displayed subnet. Learn to identify the network, broadcast, and valid host range through feedback and repeated practice."
+  topics: [IPv4, subnetting, CIDR, network address, broadcast address]
+  category: "network-fundamentals"
+  skill_level: "beginner"
+  play_minutes: 3
+  levels: 0
+  card_image: ""
+  card_image_alt: ""
+  repo: "https://github.com/silas-ever/subnetting-game"
+  repo_path: ""
+  license: ""
 
-creator:                     # (HUMAN) ask the human for every field here
-  name: ""                   # name to show on the card (a handle or first name is fine)
-  github: ""                 # GitHub username
-  location: ""               # "City, Country" or just "Country" — optional, leave "" to hide
-  organization: ""           # optional
-  links: []                  # optional, e.g. [https://linkedin.com/in/you, https://youtube.com/@you]
-  first_spec_project: true   # (HUMAN) true if this is their first spec-driven project
-  workshop: "NAF AC6"        # where the project began; change if different
-  consent_to_publish: false  # (HUMAN) set true ONLY if they agree to this card appearing on automateyournetwork.ca/arcade
+creator:
+  name: "Silas Ever"
+  github: "silas-ever"
+  location: "Atlanta, GA"
+  organization: ""
+  links: []
+  first_spec_project: true
+  workshop: "NAF AC6"
+  consent_to_publish: true
 
-build:                       # the BUILD environment — what made the game
-  started: ""                # ISO date or datetime if recorded, else "unknown"
-  finished: ""
-  wall_time: ""              # e.g. "1h58m" — only if recorded, else "unknown"
+build:
+  started: "unknown"
+  finished: "unknown"
+  wall_time: "unknown"
   spec_driven:
-    framework: ""            # e.g. GitHub Spec Kit, or "custom" / "none"
-    framework_version: ""    # output of `specify version` if used, else "unknown"
-    artifacts: []            # which exist in the repo: [constitution, spec, clarify, plan, tasks, analysis, checklists]
-    task_count: 0            # tasks in tasks.md, 0 if none
-    loops_or_phases: 0       # how many build loops/phases, 0 if not used
-  model: ""                  # exact model ID the session reported, e.g. "claude-sonnet-5-5". Not a marketing name
-  helper_models: []          # any sub-agents / secondary models, with IDs
-  harness: ""                # the tool the agent ran in: Claude Code, Codex, Cursor, Copilot, Gemini CLI, OpenCode, Kiro ...
-  harness_version: ""        # if known else "unknown"
-  mcp_servers: []            # every MCP server connected during the build, e.g. [RFC MCP, Blender MCP, Playwright MCP]
-  rag_and_sources: []        # documents, RFCs, specs, vendor docs, knowledge bases, web pages the agent drew on
-  skills_and_plugins: []     # agent skills, slash commands, plugins, hooks used
-  other_tools: []            # image generators, test runners, linters, browsers, CLIs
-  human_prompts: 0           # how many prompts the human sent, 0 if unknown
-  usage:                     # ONLY if measured by the harness. Otherwise leave "unknown"
+    framework: "Spec Kit-style workflow"
+    framework_version: "unknown"
+    artifacts: [constitution, spec, plan, tasks]
+    task_count: 16
+    loops_or_phases: 3
+  model: "unknown"
+  helper_models: []
+  harness: "Codex"
+  harness_version: "unknown"
+  mcp_servers: [unified-computer-use]
+  rag_and_sources: ["StarterKit/SPEC.md", "StarterKit/CONSTITUTION.md", "RFC 1812 section 4.2.3.1", "RFC 3021 section 2.1"]
+  skills_and_plugins: ["Repository Spec Kit skills"]
+  other_tools: ["Python 3 built-in HTTP server"]
+  human_prompts: unknown
+  usage:
     input_tokens: unknown
     output_tokens: unknown
-    cost_note: ""            # e.g. "subscription, not metered" — never estimate
-  ai_generated_assets: []    # e.g. [images: ChatGPT, 3D models: Blender MCP scripts, audio: none]
+    cost_note: "unknown"
+  ai_generated_assets: []
 
-runtime:                     # what someone needs to PLAY the finished game
-  kind: ""                   # static-web | node-app | python-app | docker | cli | other
-  stack: []                  # e.g. [HTML, ES modules, Three.js 0.x]
-  start: ""                  # exact command from repo root, e.g. python3 start.py
-  url_after_start: ""        # e.g. http://localhost:8000
-  hosted_url: ""             # public URL if it is deployed (GitHub Pages etc), else ""
-  static_root: ""            # folder that can be served as-is by any web server, e.g. "." — "" if not static
-  requires_install: false    # does the player need npm/pip install?
-  requires_network: false    # internet needed while playing?
-  requires_api_key: false    # any API key / login needed while playing?
-  uses_ai_at_runtime: false  # does the finished game call a model?
-  browsers: []               # tested browsers e.g. [Chrome 156]
-  accessibility: ""          # keyboard play? reduced motion? screen reader? say what was actually tested
-  save_state: ""             # e.g. "browser localStorage", "none"
+runtime:
+  kind: "static-web"
+  stack: [HTML, CSS, "native JavaScript modules"]
+  start: "python3 -m http.server 8000 --bind 127.0.0.1"
+  url_after_start: "http://127.0.0.1:8000"
+  hosted_url: ""
+  static_root: "."
+  requires_install: false
+  requires_network: false
+  requires_api_key: false
+  uses_ai_at_runtime: false
+  browsers: ["Google Chrome (version unknown)"]
+  accessibility: "Confirmed the briefing and Round 1 load in Chrome. Keyboard, screen reader, reduced-motion, and narrow-window behavior have not been verified."
+  save_state: "In memory only; reloading starts a new session."
 
 verification:
-  tests: ""                  # command that runs tests, e.g. node --test tests/
-  tests_passing: 0           # count from the last run, 0 if no tests
-  facts_sourced_from: []     # authoritative sources for the networking facts (RFCs, vendor docs)
-  known_limits: []           # honest list of what the game simplifies or does not model
+  tests: "Not run; no automated test suite is present."
+  tests_passing: 0
+  facts_sourced_from: ["RFC 1812 section 4.2.3.1", "RFC 3021 section 2.1"]
+  known_limits: ["Supports ordinary IPv4 host ranges from /8 through /30; /31 and /32 are excluded", "Progress is not saved after reload", "Keyboard, screen reader, reduced-motion, and narrow-window behavior have not been verified"]
 ---
 
 ## In one paragraph
 
-<!-- The human or agent: what is this game and who should play it? 3-5 sentences. -->
+Subnet Sashimi is a small educational browser game for people learning IPv4 subnetting. Players catch fish labeled with octet values and assemble a valid host address for the displayed subnet. An opening single-octet round leads into full-address rounds with prefixes from `/8` through `/30`. Explanations, a hint, retries, and a worked answer help players practice at their own pace.
 
 ## How it was built
 
-<!-- The BUILD AGENT writes this from its own record, in first person plural or neutral voice.
-     Cover: the order the spec artifacts were written; where the human changed direction; what
-     broke and how it was fixed; what you would tell the next builder. 120-250 words. No invented numbers. -->
+Work began by shaping the pitch into a constitution and specification, followed by a plan, data model, research notes, quickstart, and implementation tasks. The scope changed several times: the initial short MVP became a two-round opening progression followed by endless full-address challenges. The player also clarified how fishing should work, how Show Answer locks a challenge, and how scoring and the answer range should be presented. The game was implemented as a static page with native JavaScript modules and locally generated challenges. During iteration, the start action, fish removal, fish motion, direction, basket, and sashimi/release effects were adjusted. The old two-round summary screen also conflicted with the endless design, so that end state was removed. The code and documents describe the intended behavior, but a browser playthrough and automated checks have not been recorded. The next builder should verify the actual game in a browser before claiming the endless progression or accessibility behavior is confirmed.
 
 ## What we'd tell the next builder
 
-<!-- 3 bullet points. Specific and practical. -->
--
--
--
+- Keep grading based on subnet boundaries, not the example address used to generate a challenge.
+- Preserve the first two rounds as onboarding, then continue with full-address `/8`–`/30` rounds without a final screen.
+- Verify pointer, keyboard, reduced-motion, and narrow-window behavior in a real browser and record the results.
