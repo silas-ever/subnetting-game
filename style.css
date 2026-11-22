@@ -5,7 +5,7 @@
   background: #e9f7f3;
   font-synthesis: none;
   --ink: #243e43;
-  --muted: #698286;
+  --muted: #536e72;
   --teal: #267d79;
   --teal-dark: #1c625f;
   --coral: #ef987f;
@@ -80,6 +80,7 @@ h1 { margin: 0; color: var(--ink); font-size: clamp(1.65rem, 4vw, 2.25rem); line
 .fish:nth-child(4n) .fish-body-shape { fill: #f8df9b; stroke: #a78a4c; }
 .fish:nth-child(4n) .fish-tail-shape, .fish:nth-child(4n) .fish-fin-shape { fill: #d7b863; stroke: #a78a4c; }
 .fish:hover, .fish:focus-visible { z-index: 4; filter: brightness(1.06); }
+.fish:focus-visible { animation-play-state: paused; left: var(--rest-x) !important; top: var(--rest-y) !important; }
 .fish.hooked { z-index: 5; outline: 3px solid white; border-radius: 50%; }
 .released-fish { position: absolute; z-index: 5; top: -18%; display: block; width: 76px; height: 44px; animation: release-into-water .9s cubic-bezier(.2,.7,.3,1) forwards; }
 .released-fish .fish-icon { width: 100%; height: 100%; }
@@ -148,4 +149,5 @@ h1 { margin: 0; color: var(--ink); font-size: clamp(1.65rem, 4vw, 2.25rem); line
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .fish { animation: none !important; left: var(--rest-x) !important; top: var(--rest-y) !important; }
 }
