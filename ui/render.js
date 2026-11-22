@@ -35,7 +35,8 @@ function fishIcon(value) {
 function fishNodeMarkup(item) {
   const age = Math.max(0, (Date.now() - (item.bornAt ?? Date.now())) / 1000);
   const direction = item.x < 50 ? 'normal' : 'reverse';
-  return `<button class="fish ${direction === 'reverse' ? 'swim-reverse' : ''}" data-fish="${esc(item.id)}" style="left:${item.x}%;top:${item.y}%;--swim-duration:${item.duration ?? 9}s;animation-delay:-${age}s;animation-direction:${direction}" aria-label="Fish with octet value ${item.octet}">${fishIcon(item.octet)}</button>`;
+  const slot = item.slot ?? item.ordinal % 12;
+  return `<button class="fish ${direction === 'reverse' ? 'swim-reverse' : ''}" data-fish="${esc(item.id)}" style="left:${item.x}%;top:${item.y}%;--rest-x:${4 + (slot % 3) * 30}%;--rest-y:${16 + Math.floor(slot / 3) * 20}%;--swim-duration:${item.duration ?? 9}s;animation-delay:-${age}s;animation-direction:${direction}" aria-label="Fish with octet value ${item.octet}">${fishIcon(item.octet)}</button>`;
 }
 
 export function render(app, session, caught = [], fish = [], onAction = () => {}, releasedFish = []) {
@@ -84,6 +85,8 @@ export function updateCaught(app, session, caught, onAction) {
   }
   const count = app.querySelector('.caught-count');
   if (count) count.textContent = `${caught.length} octet${caught.length === 1 ? '' : 's'} caught`;
+  const live = app.querySelector('#live');
+  if (live) live.textContent = `${caught.length} of ${session.challenge.hiddenOctets.length} octets caught. ${caught.length ? `Basket: ${caught.join(', ')}.` : ''}`;
   const submit = app.querySelector('[data-action=submit]');
   if (submit) submit.disabled = caught.length < session.challenge.hiddenOctets.length;
 }

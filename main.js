@@ -14,8 +14,19 @@ let random = createRandom(session.seed ^ 0xa5a5a5a5);
 let hintVisible = false;
 
 function replenish() {
-  if (session.view === 'briefing' || fish.length >= 12) return;
+  if (session.view === 'briefing' || session.answerShown || session.feedback?.status === 'correct') return;
+  // Stationary fish still refresh, but never disappear while keyboard-focused.
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    fish = fish.filter((item) => {
+      const node = app.querySelector(`[data-fish="${CSS.escape(item.id)}"]`);
+      if (Date.now() - item.bornAt < 12000 || node === document.activeElement) return true;
+      node?.remove();
+      return false;
+    });
+  }
+  if (fish.length >= 12) return;
   const newFish = nextFish(session.challenge, random);
+  newFish.slot = Array.from({ length: 12 }, (_, i) => i).find(i => !fish.some(item => item.slot === i));
   fish = [...fish, newFish];
   appendFish(app, newFish, action);
 }
@@ -24,7 +35,7 @@ function startFishStream() {
   clearInterval(fishTimer);
   fish = [];
   caught = [];
-  for (let i = 0; i < 4; i += 1) fish.push(nextFish(session.challenge, random));
+  for (let i = 0; i < 4; i += 1) fish.push({ ...nextFish(session.challenge, random), slot: i });
   fishTimer = setInterval(replenish, 1800);
 }
 
@@ -57,6 +68,9 @@ function action(name, payload) {
       patchOnly = true;
     }
   } else if (name === 'fish-left') {
+    const node = app.querySelector(`[data-fish="${CSS.escape(payload)}"]`);
+    if (node === document.activeElement) app.querySelector('[data-action=hint]')?.focus();
+    node?.remove();
     fish = fish.filter((item) => item.id !== payload);
     setTimeout(replenish, 60);
     return;
@@ -99,7 +113,12 @@ function action(name, payload) {
       clearInterval(fishTimer);
     }
   }
-  if (patchOnly) updateCaught(app, session, caught, action);
+  if (patchOnly) {
+    updateCaught(app, session, caught, action);
+    if (document.activeElement === document.body) {
+      (app.querySelector('[data-action=submit]:not(:disabled)') || app.querySelector('[data-fish]'))?.focus({ preventScroll: true });
+    }
+  }
   else paint();
 }
 
